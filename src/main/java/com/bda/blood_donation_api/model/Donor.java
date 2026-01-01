@@ -91,6 +91,12 @@ public class Donor {
 	    public Donor() {
 	    	
 	    }
+		@Override
+		public String toString() {
+			return "Donor [id=" + id + ", name=" + name + ", phone=" + phone + ", email=" + email + ", bloodGroup="
+					+ bloodGroup + ", location=" + location + ", age=" + age + ", lastDonation=" + lastDonation
+					+ ", availability=" + availability + "]";
+		}
 }
 
 
