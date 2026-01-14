@@ -4,7 +4,7 @@ import org.springframework.web.bind.annotation.*;
 
 import com.bda.blood_donation_api.service.AdminService;
 
-@CrossOrigin(origins = "http://localhost:5173")
+@CrossOrigin(origins = "https://saveone.vercel.app")
 @RestController
 @RequestMapping("/api/admin")
 public class AdminController {
