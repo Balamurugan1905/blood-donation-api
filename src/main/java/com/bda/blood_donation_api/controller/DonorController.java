@@ -3,15 +3,10 @@ package com.bda.blood_donation_api.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.bda.blood_donation_api.model.Donor;
-import com.bda.blood_donation_api.repository.DonorRepository;
+import com.bda.blood_donation_api.service.DonorService;
 
 @RestController
 @RequestMapping("/donors")
@@ -19,16 +14,26 @@ import com.bda.blood_donation_api.repository.DonorRepository;
 public class DonorController {
 
     @Autowired
-    private DonorRepository donorRepository;
+    private DonorService donorService;
 
     @GetMapping
     public List<Donor> getAllDonors() {
-        return donorRepository.findAll();
+        return donorService.getAllDonors();
     }
 
     @PostMapping
     public Donor addDonor(@RequestBody Donor donor) {
-        return donorRepository.save(donor);
+        return donorService.addDonor(donor);
+    }
+
+    @PutMapping("/{id}")
+    public Donor updateDonor(@PathVariable Long id, @RequestBody Donor donor) {
+        return donorService.updateDonor(id, donor);
+    }
+
+    @DeleteMapping("/{id}")
+    public String deleteDonor(@PathVariable Long id) {
+        donorService.deleteDonor(id);
+        return "Donor deleted successfully with id: " + id;
     }
 }
-
